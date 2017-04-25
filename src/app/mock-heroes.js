@@ -1,5 +1,5 @@
 "use strict";
-var HEROES = [
+exports.HEROES = [
     { id: 11, name: 'Mr. Nice' },
     { id: 12, name: 'Narco' },
     { id: 13, name: 'Bombasto' },
@@ -11,6 +11,4 @@ var HEROES = [
     { id: 19, name: 'Magma' },
     { id: 20, name: 'Tornado' }
 ];
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = HEROES;
-//# sourceMappingURL=HeroSeed.js.map
+//# sourceMappingURL=mock-heroes.js.map

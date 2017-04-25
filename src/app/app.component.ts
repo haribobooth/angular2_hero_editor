@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Hero } from './hero'
-import HEROES from './HeroSeed'
+import { Component, OnInit } from '@angular/core';
+import { Hero } from './hero';
+import { HeroService } from './hero.service';
 
 @Component({
   selector: 'my-app',
@@ -65,16 +65,29 @@ import HEROES from './HeroSeed'
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
-    `]
+    `],
+    providers: [HeroService],
   })
 
-  export class AppComponent  {
+  export class AppComponent implements OnInit {
     name = 'Hero Editor';
-    heroes = HEROES;
+    heroes: Hero[];
     selectedHero: Hero;
 
     onSelect(hero: Hero): void {
       this.selectedHero = hero;
+    };
+
+    constructor(private heroService: HeroService) {
+
+    };
+
+    getHeroes(): void {
+      this.heroes = this.heroService.getHeroes();
+    };
+
+    ngOnInit(): void {
+      this.getHeroes();
     };
 
   }
