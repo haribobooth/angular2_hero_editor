@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Hero } from './Hero'
+import { Hero } from './hero'
 import HEROES from './HeroSeed'
 
 @Component({
@@ -15,14 +15,7 @@ import HEROES from './HeroSeed'
     </li>
   </ul>
 
-  <div *ngIf="selectedHero">
-    <h2>{{selectedHero.name}}</h2>
-    <div><label>id: </label>{{selectedHero.id}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="selectedHero.name" placeholder="name">
-    </div>
-  </div>
+  <hero-detail [hero]="selectedHero"></hero-detail>
   `,
   styles: [`
     .selected {
