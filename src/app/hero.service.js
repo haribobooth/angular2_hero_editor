@@ -14,6 +14,11 @@ var HeroService = (function () {
         return Promise.resolve(mock_heroes_1.HEROES);
     };
     ;
+    HeroService.prototype.getHero = function (id) {
+        return this.getHeroes()
+            .then(function (returnedHeroes) { return returnedHeroes.find(function (hero) { return hero.id === id; }); });
+    };
+    ;
     return HeroService;
 }());
 HeroService = __decorate([
