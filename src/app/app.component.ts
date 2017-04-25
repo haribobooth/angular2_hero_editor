@@ -8,17 +8,19 @@ import HEROES from './HeroSeed'
   <h1>{{name}}</h1>
 
   <h2>My Heroes</h2>
-    <ul class="heroes">
-    <li *ngFor="let hero of heroes">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </li>
+  <ul class="heroes">
+  <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+  <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
   </ul>
 
-  <h2>{{hero.name}}</h2>
-  <div><label>id: </label>{{hero.id}}</div>
+  <div *ngIf="selectedHero">
+  <h2>{{selectedHero.name}}</h2>
+  <div><label>id: </label>{{selectedHero.id}}</div>
   <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name">
+  <label>name: </label>
+  <input [(ngModel)]="selectedHero.name" placeholder="name">
+  </div>
   </div>
   `,
   styles: [`
@@ -75,8 +77,10 @@ import HEROES from './HeroSeed'
   export class AppComponent  {
     name = 'Hero Editor';
     heroes = HEROES;
-    hero: Hero = {
-      name: "Caped Baldy",
-      id: 1
-    }
+    selectedHero: Hero;
+
+    onSelect(hero: Hero): void {
+      this.selectedHero = hero;
+    };
+    
   }
