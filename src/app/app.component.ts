@@ -83,7 +83,7 @@ import { HeroService } from './hero.service';
     };
 
     getHeroes(): void {
-      this.heroes = this.heroService.getHeroes();
+      this.heroService.getHeroes().then(returnedHeroes => this.heroes = returnedHeroes);
     };
 
     ngOnInit(): void {
